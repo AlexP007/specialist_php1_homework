@@ -1,8 +1,10 @@
 <?php
 
-require_once "tasks.php";
 
-function ensure(callable $c, array $args, array $results): array {
+require "tasks.php";
+
+function ensure(callable $c, array $args, array $results): array
+{
     foreach ($args as $key => $singleArgs) {
         $result = call_user_func($c, $singleArgs);
         if ($results[$key] !== $result) {
@@ -34,15 +36,15 @@ $tests = [
         'task4',
         [0, 150, 275],
         [-273.15, -123.15, 1.85],
-    ],[
+    ], [
         'task5',
         ['450', '-150', '275'],
         [450, -150, 275],
-    ],[
+    ], [
         'task6',
         [450, -150, 275],
         ['450', '-150', '275'],
-    ],[
+    ], [
         'task7',
         [null],
         [date("H:i")],
@@ -54,5 +56,3 @@ $testsResult = [];
 foreach ($tests as $test) {
     $testsResult[] = ensure($test[0], $test[1], $test[2]);
 }
-echo "<pre>";
-print_r($testsResult);
