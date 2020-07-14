@@ -32,7 +32,7 @@ require 'tests.php';
         <?php else: ?>
             <span style="color: crimson">Задание <?=$key+1?> не принято</span><br>
             <span style="color: crimson">Тест <?=$result['index']+1?> не пройден</span><br>
-            <?php if($result['arg']): ?>
+            <?php if($result['arg'] !== null): ?>
                 Исходное значение: <?=$result['arg']?><br>
             <?php endif;?>
             Ожидаемое значение: <?= $result['expected']?><br>
