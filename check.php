@@ -28,7 +28,7 @@ require 'tests.php';
 <?php foreach ($testsResult as $key => $result): ?>
     <li>
         <?php if($result['success']): ?>
-            <span style="color: lightgreen">Задание <?=$key+1?> принято</span>
+            <span style="color: green">Задание <?=$key+1?> принято</span>
         <?php else: ?>
             <span style="color: crimson">Задание <?=$key+1?> не принято</span><br>
             <span style="color: crimson">Тест <?=$result['index']+1?> не пройден</span><br>
@@ -36,6 +36,7 @@ require 'tests.php';
                 Исходное значение: <?=$result['arg']?><br>
             <?php endif;?>
             Ожидаемое значение: <?= $result['expected']?><br>
+            Полученное значение: <?= $result['returned']?><br>
         <?php endif; ?>
     </li>
 <?php endforeach;?>

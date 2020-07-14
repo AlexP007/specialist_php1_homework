@@ -13,6 +13,7 @@ function ensure(callable $c, array $args, array $results): array
                 'index'    => $key,
                 'arg'      => $singleArgs,
                 'expected' => $results[$key],
+                'returned' => $result
             ];
         }
     }
