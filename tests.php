@@ -1,6 +1,5 @@
 <?php
 
-
 require "tasks.php";
 
 function ensure(callable $c, array $args, array $results): array
@@ -10,7 +9,7 @@ function ensure(callable $c, array $args, array $results): array
         if ($results[$key] !== $result) {
             // Float numbers are not accurate
             if (is_float($results[$key]) && is_float($result)) {
-                if (abs($results[$key] - $result) < PHP_FLOAT_EPSILON) {
+                if (abs($results[$key] - $result) < 1e-10) {
                     continue;
                 }
             }
