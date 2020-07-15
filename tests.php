@@ -8,6 +8,12 @@ function ensure(callable $c, array $args, array $results): array
     foreach ($args as $key => $singleArgs) {
         $result = call_user_func($c, $singleArgs);
         if ($results[$key] !== $result) {
+            // Float numbers are not accurate
+            if (is_float($results[$key]) && is_float($result)) {
+                if (abs($results[$key] - $result) < PHP_FLOAT_EPSILON) {
+                    continue;
+                }
+            }
             return [
                 'success'  => false,
                 'index'    => $key,
